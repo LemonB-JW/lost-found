@@ -4,6 +4,7 @@ import {
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { API_ROOT } from '../constants';
+import { Link } from 'react-router-dom';
 
 const FormItem = Form.Item;
 
@@ -26,9 +27,10 @@ class RegistrationForm extends Component {
                         username: values.username,
                         password: values.password
                     })
-
                 }).then((response) => {
                     message.success(response);
+                    // jump from register page to login
+                    this.props.history.push('/login');
                 }, (error) => {
                     message.error(error.responseText);
                 }).catch((err) => {
@@ -130,6 +132,7 @@ class RegistrationForm extends Component {
 
                 <FormItem {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">Register</Button>
+                    <p>I already have an account, go back to <Link to="/login">login!</Link></p>
                 </FormItem>
             </Form>
         );

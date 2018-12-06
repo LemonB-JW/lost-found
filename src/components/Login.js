@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { API_ROOT } from '../constants';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 import {
     Form, Icon, Input, Button, message,
@@ -23,6 +24,7 @@ class NormalLoginForm extends Component {
                     })
                 }).then((response) => {
                     message.success(response);
+                    this.props.history.push('/home');
                 }, (error) => {
                     message.error(error.responseText);
                 }).catch((err) => {
@@ -55,7 +57,7 @@ class NormalLoginForm extends Component {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or <Link to="/register">register now!</Link>
                 </FormItem>
             </Form>
         );
