@@ -9,14 +9,22 @@ export class Main extends Component {
         return this.props.isLoggedIn ? <Redirect to="/home"/> : <Login handleLogin={this.props.handleLogin}/>;
     }
 
+    getHome = () => {
+        return this.props.isLoggedIn ? <Home/> : <Redirect to="/login"/>;
+    }
+
+    getRoot = () => {
+        return <Redirect to="/login"/>
+    }
+
     render() {
         return (
             <div>
                 <Switch>
-                    <Route exact path="/" render={this.getLogin}/>
+                    <Route exact path="/" render={this.getRoot}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/login" render={this.getLogin}/>
-                    <Route path="/home" component={Home}/>
+                    <Route path="/home" component={this.getHome}/>
                     <Route render={this.getLogin}/>
                 </Switch>
             </div>
