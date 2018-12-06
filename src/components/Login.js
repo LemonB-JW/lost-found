@@ -23,8 +23,10 @@ class NormalLoginForm extends Component {
                         password: values.password
                     })
                 }).then((response) => {
-                    message.success(response);
-                    this.props.history.push('/home');
+                    // message.success(response);
+                    // After successfully login, jump to home page
+                    // response: token
+                    this.props.handleLogin(response);
                 }, (error) => {
                     message.error(error.responseText);
                 }).catch((err) => {
