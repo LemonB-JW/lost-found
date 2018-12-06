@@ -3,7 +3,7 @@ import {
 } from 'antd';
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { API_ROOT } from './constants';
+import { API_ROOT } from '../constants';
 
 const FormItem = Form.Item;
 
