@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { API_ROOT } from '../constants';
+import $ from 'jquery';
 
 import {
-    Form, Icon, Input, Button, Checkbox,
+    Form, Icon, Input, Button, message,
 } from 'antd';
 
 const FormItem = Form.Item;
@@ -12,8 +14,23 @@ class NormalLoginForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                $.ajax({
+                    url: `${API_ROOT}/login`,
+                    method:'POST',
+                    data: JSON.stringify({
+                        username: values.username,
+                        password: values.password
+                    })
+                }).then((response) => {
+                    message.success(response);
+                }, (error) => {
+                    message.error(error.responseText);
+                }).catch((err) => {
+                    console.log(err);
+                });
             }
         });
+
     }
 
     render() {
@@ -21,7 +38,7 @@ class NormalLoginForm extends Component {
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('username', {
                         rules: [{ required: true, message: 'Please input your username!' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
