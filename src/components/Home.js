@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { GEO_OPTIONS } from '../constants';
+import { Tabs, Button } from 'antd';
+
+const TabPane = Tabs.TabPane;
+
 
 export class Home extends Component {
     componentDidMount() {
@@ -27,10 +31,15 @@ export class Home extends Component {
         console.log(err);
     }
     render() {
-        return (
-            <div>
-                This is Home!
+      const operations = <Button type="primary" icon="upload">I Want to Post!</Button>;
+      return (
+            <div className="tabs">
+              <Tabs tabBarExtraContent={operations}>
+                <TabPane tab="Post" key="1">Content of tab 1</TabPane>
+                <TabPane tab="Map" key="2">Content of tab 2</TabPane>
+              </Tabs>
             </div>
         )
     }
+
 }
