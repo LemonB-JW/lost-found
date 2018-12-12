@@ -6,6 +6,7 @@ import { API_ROOT } from '../constants'
 import { AUTH_PREFIX } from '../constants';
 import {Gallery} from './Gallery';
 import { CreatePost } from './CreatePost';
+import { WrappedMap } from './Map';
 
 const TabPane = Tabs.TabPane;
 
@@ -139,7 +140,14 @@ export class Home extends Component {
                   tab="Post" key="1">
                   {this.getGalleryPanelContent()}
                   </TabPane>
-                <TabPane tab="Map" key="2">Content of tab 2</TabPane>
+                <TabPane tab="Map" key="2">
+                  <WrappedMap
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJMryJTq6ooc-0lsIN399CIUWBze2nrNA&v=3.exp&libraries=geometry,drawing,places"
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                  />
+                </TabPane>
               </Tabs>
             </div>
 
