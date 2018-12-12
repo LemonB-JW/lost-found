@@ -131,7 +131,7 @@ export class Home extends Component {
 
 
     render() {
-        const operations = <CreatePost/>
+        const operations = <CreatePost loadNearbyPost={this.loadNearbyPost}/>;
 
         return (
             <div className="main-tabs">

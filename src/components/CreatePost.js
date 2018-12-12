@@ -40,6 +40,7 @@ export class CreatePost extends Component {
           this.form.resetFields();
           this.setState({ visible: false, confirmLoading: false });
           this.props.loadNearbyPost();
+          console.log('Reload Succeed!');
         }, (response) => {
           message.error(response.responseText);
           this.setState({ visible: false, confirmLoading: false });
@@ -55,9 +56,11 @@ export class CreatePost extends Component {
       visible: false,
     });
   }
+
   saveFormRef = (form) => {
     this.form = form;
   }
+
   render() {
     const { visible, confirmLoading } = this.state;
     return (
