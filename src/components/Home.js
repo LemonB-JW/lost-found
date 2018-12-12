@@ -89,9 +89,10 @@ export class Home extends Component {
             return  <Spin tip="Loading Geolocation..."/>;
         } else if (this.state.loadingPosts) {
             return  <Spin tip="Loading Posts..."/>;
-        } else if (this.state.post && this.state.post.length >0) {
+        } else if (this.state.posts && this.state.posts.length > 0) {
             // map info in posts to images info
-            const images = this.state.post.map((post) => {
+            console.log("Post!");
+            const images = this.state.posts.map((post) => {
               return {
                 user: post.user,
                 src: post.url,
