@@ -4,7 +4,8 @@ import { GEO_OPTIONS } from '../constants';
 import { Tabs, Button, Spin } from 'antd';
 import { API_ROOT } from '../constants'
 import { AUTH_PREFIX } from '../constants';
-import {Gallery} from './Gallery'
+import {Gallery} from './Gallery';
+import { CreatePost } from './CreatePost';
 
 const TabPane = Tabs.TabPane;
 
@@ -128,7 +129,8 @@ export class Home extends Component {
 
 
     render() {
-        const operations = <Button type="primary" icon="upload">I Want to Post!</Button>;
+        const operations = <CreatePost/>
+
         return (
             <div className="main-tabs">
               <Tabs tabBarExtraContent={operations}>
